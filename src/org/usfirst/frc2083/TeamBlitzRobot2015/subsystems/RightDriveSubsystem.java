@@ -8,7 +8,6 @@ package org.usfirst.frc2083.TeamBlitzRobot2015.subsystems;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc2083.TeamBlitzRobot2015.RobotMap;
 
 /**
@@ -22,8 +21,8 @@ public class RightDriveSubsystem extends PIDSubsystem {
     
     public RightDriveSubsystem() {
         super("Right Drive", 0.01, 0, 0, 0.02);
-        this.rightFront = RobotMap.rightFront;
-        this.rightBack = RobotMap.rightBack;
+        this.rightFront = RobotMap.rightForwardMotorController;
+        this.rightBack = RobotMap.rightBackMotorController;
         this.enable();
         this.getPIDController().setOutputRange(-12, 12);
         
@@ -46,7 +45,7 @@ public class RightDriveSubsystem extends PIDSubsystem {
     }
 
     public void usePIDOutput(double d) {
-        System.out.println("Right " + getSetpoint() + " " + returnPIDInput() + " " + d + " " + rightFront.getOutputCurrent() + " " + rightBack.getOutputCurrent());
+//        System.out.println("Right " + getSetpoint() + " " + returnPIDInput() + " " + d + " " + rightFront.getOutputCurrent() + " " + rightBack.getOutputCurrent());
         rightFront.set(d);
         rightBack.set(d);
     }
